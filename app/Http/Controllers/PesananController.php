@@ -43,7 +43,6 @@ class PesananController extends Controller
     }
     public function store(Request $request)
     {
-
         // validate
         $validatedData = $request->validate([
             'kendaraan_id' => 'required',
@@ -60,23 +59,26 @@ class PesananController extends Controller
         return redirect()->route('pesanan.index');
     }
     public function action(){
+        
         $data = DB::table('pesanan_tabel')
             ->join('kendaraan_tabel', 'kendaraan_tabel.id', '=', 'pesanan_tabel.kendaraan_id')
             ->join('pegawai_tabel', 'pegawai_tabel.id', '=', 'pesanan_tabel.pegawai_id')
+            ->select('pesanan_tabel.id as id_pesanan', 'pesanan_tabel.*', 'kendaraan_tabel.*', 'pegawai_tabel.*')
             ->get();
         return view('pesanan.persetujuan', ['data' => $data]);
     }
     public function persetujuan($id)
     {
-        // mengambil data pesanan berdasarkan id
-        // mengubah status pesanan menjadi disetujui
         $pesanan = Pesanan::find($id);
 
-        // mengubah status pesanan menjadi disetujui
-        $pesanan->status_pesanan = 'disetujui';
+
+        if (!$pesanan) {
+            return redirect()->route('pesanan.index')->with('error', 'Pesanan tidak ditemukan.');
+        }
+
+        $pesanan->status_pesanan = 'Disetujui';
         $pesanan->save();
 
-        // jika berhasil redirect ke halaman pesanan
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui.');
     }
 }

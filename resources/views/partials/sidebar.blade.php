@@ -17,13 +17,15 @@
             </a>
         </div>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item">
-                <a href="/" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+            <li class="nav-item w-100 " aria-expanded="false" class="dropdown-toggle nav-link">
+                <a class="nav-link" href="{{ Route('dashboard') }}">
                     <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
+                    <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span></span>
                 </a>
             </li>
         </ul>
+        @if (Auth::user()->hak_akses == 'admin')
+            
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
                 <a href="#data" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -44,6 +46,7 @@
                 </a>
             </li>
         </ul>
+        @elseif (Auth::user()->hak_akses == 'atasan')
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
                 <a class="nav-link" href="{{ Route('pesanan.action') }}">
@@ -68,6 +71,8 @@
                 </a>
             </li>
         </ul>
+        @endif
+
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
                 <a class="nav-link" href="/pesanan">

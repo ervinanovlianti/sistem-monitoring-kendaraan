@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="page-title">Data Kendaraan</h2>
+            <h2 class="page-title">Data Kendaraan {{ Auth::user()->name }}</h2>
             <p></p>
             <div class="row">
                 <!-- simple table -->
