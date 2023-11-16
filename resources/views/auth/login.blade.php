@@ -25,38 +25,51 @@
 
 <body class="vertical  light  ">
     <div class="wrapper vh-100">
-        <div class="row align-items-center h-100">
-            <form class="col-lg-3 col-md-4 col-10 mx-auto text-center">
-                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                    <svg version="1.1" id="logo" class="navbar-brand-img brand-md"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 120 120" xml:space="preserve">
-                        <g>
-                            <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                            <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                            <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                        </g>
-                    </svg>
-                </a>
-                <h1 class="h6 mb-3">Sign in</h1>
-                <div class="form-group">
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control form-control-lg"
-                        placeholder="Email address" required="" autofocus="" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control form-control-lg"
-                        placeholder="Password" required="" name="password">
-                </div>
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Stay logged in </label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Let me in</button>
-                <p class="mt-5 mb-3 text-muted">© 2020</p>
-            </form>
+      <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Login</div>
+            <div class="card-body">
+                <form action="{{ route('authenticate') }}" method="post">
+                    @csrf
+                    <div class="mb-3 row">
+                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email</label>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                            @if ($errors->has('email'))
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                            @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-8 offset-md-4">
+                            
+                            <button type="submit" class="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div class="row mb-0">
+                        <div class="col-md-8 offset-md-4">
+                            <small>Belum Punya Akun? <a href="/register">Register</a></small>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
         </div>
+    </div>    
+</div>
     </div> <!-- .wrapper -->
     <script src="{{ asset('template/js/jquery.min.js') }}"></script>
     <script src="{{ asset('template/js/popper.min.js') }}"></script>
