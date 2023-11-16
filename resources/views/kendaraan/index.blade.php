@@ -9,8 +9,7 @@
                 <div class="col-md-12 my-4">
                     <div class="card shadow">
                         <div class="card-body">
-                            <h5 class="card-title">Simple Table</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="{{ route('kendaraan.create') }}" class="btn btn-primary mb-3" type="button">Add New</a>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>

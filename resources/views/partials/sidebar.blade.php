@@ -25,16 +25,20 @@
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="/kendaraan">
-                    <i class="fe fe-layers fe-16"></i>
+            <li class="nav-item dropdown">
+                <a href="#data" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-book fe-16"></i>
                     <span class="ml-3 item-text">Data</span>
                 </a>
+                <ul class="collapse list-unstyled pl-4 w-100" id="data">
+                    <a class="nav-link pl-3" href="{{ Route('kendaraan.index') }}"><span class="ml-1">Kendaraan</span></a>
+                    <a class="nav-link pl-3" href="{{ Route('pegawai.index') }}"><span class="ml-1">Pegawai</span></a>
+                </ul>
             </li>
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="/pesanan">
+                <a class="nav-link" href="{{ Route('pesanan.index') }}">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Pesanan</span>
                 </a>
@@ -42,7 +46,7 @@
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="/pesanan">
+                <a class="nav-link" href="{{ Route('pesanan.action') }}">
                     <i class="fe fe-check-square fe-16"></i>
                     <span class="ml-3 item-text">Persetujuan</span>
                 </a>
