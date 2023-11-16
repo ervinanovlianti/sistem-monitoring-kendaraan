@@ -8,7 +8,6 @@
                 <div class="col-md-12 my-4">
                     <div class="card shadow">
                         <div class="card-body">
-                            <a href="{{ route('pesanan.create') }}" class="btn btn-primary mb-3">Tambah</a>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -43,8 +42,8 @@
                                             </td>
                                             <td>
                                                 @if ($pesanan->status_pesanan == 'Menunggu Persetujuan 1')
-                                                    <a href="{{ route('pesanan.persetujuan', $pesanan->id) }}"
-                                                        class="btn btn-success">Accept</a>
+                                                    <a href="{{ route('pesanan.persetujuan', ['id' => $pesanan->id_pesanan]) }}"
+                                                        class="btn btn-primary">Accept</a>
                                                 @endif
                                             </td>
                                         </tr>
