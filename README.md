@@ -1,4 +1,5 @@
 # Sistem Monitoring Kendaraan Proyek
+## Arsitektur Aplikasi Pemesanan Kendaraan
 ```mermaid
 graph TD;
   subgraph Company
@@ -54,5 +55,6 @@ graph TD;
   f22 -->|Persetujuan| f30
   f23 -->|Persetujuan| f31
 ```
-![Diagram Basis Data](https://dbdiagram.io/d/SISTEM-MONITORING-KENDARAAN-65571e073be14957872f1e84)
+## Design Database
+![Diagram Basis Data](image/sistem-monitoring.png)
 
