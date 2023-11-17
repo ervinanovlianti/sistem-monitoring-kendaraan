@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pegawais', function (Blueprint $table) {
+        Schema::create('riwayat_persetujuan', function (Blueprint $table) {
             $table->id();
+            // pesanan_id
+            $table->foreignId('pesanan_id')->constrained('pesanan');
+            $table->foreignId('disetujui_oleh')->constrained('pegawai');
+            $table->date('tanggal_disetujui');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pegawais');
+        Schema::dropIfExists('riwayat_persetujuan');
     }
 };
