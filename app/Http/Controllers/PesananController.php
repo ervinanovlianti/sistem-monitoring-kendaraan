@@ -71,7 +71,7 @@ class PesananController extends Controller
             ->get();
         return view('pesanan.persetujuan', ['data' => $data]);
     }
-    public function persetujuan($id)
+    public function persetujuanPertama($id)
     {
         $pesanan = Pesanan::find($id);
 
@@ -79,10 +79,25 @@ class PesananController extends Controller
             return redirect()->route('pesanan.index')->with('error', 'Pesanan tidak ditemukan.');
         }
 
-        $pesanan->status_pesanan = 'Disetujui';
+        $pesanan->status = 'Diteruskan';
+        $pesanan->atasan_id = 1;
         $pesanan->save();
 
-        return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui.');
+        return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui di kantor cabang.');
+    }
+    public function persetujuanKedua($id)
+    {
+        $pesanan = Pesanan::find($id);
+
+        if (!$pesanan) {
+            return redirect()->route('pesanan.index')->with('error', 'Pesanan tidak ditemukan.');
+        }
+
+        $pesanan->status = 'Disetujui';
+        $pesanan->atasan_id = 1;
+        $pesanan->save();
+
+        return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui di kantor pusat.');
     }
     public function dashboard()
     {

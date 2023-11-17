@@ -64,7 +64,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->hak_akses == 'admin') {
-                return redirect()->route('dashboard')
+                return redirect()->route('dashboard-admin')
                     ->withSuccess('You have successfully logged in as admin!');
             }elseif (Auth::user()->hak_akses == 'atasan') {
                 return redirect()->route('dashboard')
@@ -85,4 +85,6 @@ class AuthController extends Controller
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');;
     }
+
+    
 }

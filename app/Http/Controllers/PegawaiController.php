@@ -36,4 +36,8 @@ class PegawaiController extends Controller
         echo "<script>alert('Error!');</script>";
         return redirect()->route('pegawai.index');
     }
+    public function profil()
+    {
+        return view('profil');
+    }
 }
