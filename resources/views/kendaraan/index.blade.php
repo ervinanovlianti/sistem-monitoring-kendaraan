@@ -18,6 +18,7 @@
                                         <th>Jenis</th>
                                         <th>Nomor Plat</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -28,7 +29,10 @@
                                             <td>{{ $kendaraan->merk }}</td>
                                             <td>{{ $kendaraan->plat_nomor }}</td>
                                             <td>{{ $kendaraan->tipe }}</td>
-                                            {{-- <td><span class="badge badge-pill badge-info">Tersedia</span></td> --}}
+                                            <td><span class="badge badge-pill badge-info">Tersedia</span></td>
+                                            <td>
+                                                <a href="{{ route('kendaraan.detail', $kendaraan->id) }}" class="btn btn-primary">Detail</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

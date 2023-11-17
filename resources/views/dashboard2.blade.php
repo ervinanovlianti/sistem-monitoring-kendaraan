@@ -80,6 +80,72 @@
                     </div> <!-- /. card -->
                 </div> <!-- /. col -->
             </div> <!-- end section -->
+            <h2 class="page-title">Konsumsi BBM</h2>
+            <div class="row">
+                <div class="col-md-12 my-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Lokasi</th>
+                                        {{-- <th>Action</th> --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div> <!-- end section -->
+            <h2 class="page-title">Jadwal Service</h2>
+            <div class="row">
+                <div class="col-md-12 my-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Lokasi</th>
+                                        {{-- <th>Action</th> --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div> <!-- end section -->
+            <h2 class="page-title">Riwayat Pemakaian</h2>
+            <div class="row">
+                <div class="col-md-12 my-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Lokasi</th>
+                                        {{-- <th>Action</th> --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </div> <!-- end section -->
         </div>
     </div>
 @endsection

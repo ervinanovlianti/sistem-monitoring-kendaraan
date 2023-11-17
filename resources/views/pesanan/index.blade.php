@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="page-title">Data Pemesanan Kendaraan</h2>
+            <h2 class="page-title">Data Pesanan Kendaraan</h2>
             <div class="row">
                 <!-- simple table -->
                 <div class="col-md-12 my-4">
