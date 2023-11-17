@@ -5,13 +5,13 @@ graph TD;
   subgraph Company
     f1[Perusahaan]
     f1 --> f2[Kantor Pusat]
-    f1 --> f3[Kantor Cabang]
-    f1 --> f4[Tambang 1]
-    f1 --> f5[Tambang 2]
-    f1 --> f6[Tambang 3]
-    f1 --> f7[Tambang 4]
-    f1 --> f8[Tambang 5]
-    f1 --> f9[Tambang 6]
+    f2 --> f3[Kantor Cabang]
+    f3 --> f4[Tambang 1]
+    f3 --> f5[Tambang 2]
+    f3 --> f6[Tambang 3]
+    f3 --> f7[Tambang 4]
+    f3 --> f8[Tambang 5]
+    f3 --> f9[Tambang 6]
   end 
 ```
 ```mermaid
@@ -31,22 +31,21 @@ graph TD;
     f15 --> f16[Konsumsi BBM]
     f15 --> f17[Jadwal Service]
     f15 --> f18[Riwayat Pemakaian]
-    f15 --> f19[Pemesanan Kendaraan]
+    f14 --> f19[Pemesanan Kendaraan]
     f19 --> f20[Admin]
     f19 --> f21[Pihak yang Menyetujui]
     f21 --> f22[Pihak 1]
     f21 --> f23[Pihak 2]
     f19 --> f24[Driver]
-    f19 --> f25[Dashboard]
+    f14 --> f25[Dashboard]
     f25 --> f26[Grafik Pemakaian Kendaraan]
     f19 --> f27[Laporan Periodik]
-    %% f27 --> f28[Export (Excel)]
   end
 
   subgraph ApprovalHierarchy
     f29[Persetujuan]
     f29 --> f30[Level 1]
-    f29 --> f31[Level 2]
+    f30 --> f31[Level 2]
   end
 
   f20 -->|Input Pemesanan| f19
