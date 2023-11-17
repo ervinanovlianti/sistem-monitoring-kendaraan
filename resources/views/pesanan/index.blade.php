@@ -17,7 +17,7 @@
                                         <th>Nama Kendaraan</th>
                                         <th>Jenis Kendaraan</th>
                                         <th>Supir</th>
-                                        <th>Atasan</th>
+                                        <th>Persetujuan</th>
                                         <th>Status Pesanan</th>
                                     </tr>
                                 </thead>
@@ -29,17 +29,17 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $pesanan->tanggal_pemesanan }}</td>
-                                            <td>{{ $pesanan->nama_kendaraan }}</td>
-                                            <td>{{ $pesanan->jenis }}</td>
+                                            <td>{{ $pesanan->merk }}</td>
+                                            <td>{{ $pesanan->tipe }}</td>
                                             <td>{{ $pesanan->nama_pegawai }}</td>
                                             <td>{{ $pesanan->nama_atasan }}</td>
                                             <td>
-                                                @if ($pesanan->status_pesanan == 'Menunggu Persetujuan 1')
+                                                @if ($pesanan->status == 'Menunggu Persetujuan 1')
                                                     <span
-                                                        class="badge badge-pill badge-info">{{ $pesanan->status_pesanan }}</span>
+                                                        class="badge badge-pill badge-info">{{ $pesanan->status }}</span>
                                                 @else
                                                     <span
-                                                        class="badge badge-pill badge-success  text-white">{{ $pesanan->status_pesanan }}</span>
+                                                        class="badge badge-pill badge-success  text-white">{{ $pesanan->status }}</span>
                                                 @endif
                                             </td>
                                         </tr>

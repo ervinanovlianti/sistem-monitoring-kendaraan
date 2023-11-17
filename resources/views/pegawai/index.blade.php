@@ -25,9 +25,9 @@
                                     @foreach ($data as $pegawai)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $pegawai->nama }}</td>
-                                            <td>{{ $pegawai->status }}</td>
-                                            <td>{{ $pegawai->atasan }}</td>
+                                            <td>{{ $pegawai->nama_pegawai }}</td>
+                                            <td>{{ $pegawai->jabatan }}</td>
+                                            <td>{{ $pegawai->nama_atasan }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

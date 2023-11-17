@@ -7,8 +7,8 @@
             <form action="{{ route('kendaraan.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="nama_kendaraan">Nama Kendaraan</label>
-                    <input type="text" class="form-control" id="nama_kendaraan" name="nama_kendaraan">
+                    <label for="nama_kendaraan">Merk Kendaraan</label>
+                    <input type="text" class="form-control" id="nama" name="merk">
                 </div>
                 <div class="form-group">
                     <label for="plat_nomor">Plat Nomor</label>
@@ -16,18 +16,20 @@
                 </div>
                 <div class="form-group">
                     <label for="jenis">Jenis</label>
-                    <select name="jenis" id="" class="form-control">
+                    <select name="tipe" id="" class="form-control">
                         <option value="">Pilih Jenis</option>
                         <option value="Angkutan Orang">Angkutan Orang</option>
                         <option value="Angkutan Barang">Angkutan Barang</option>
                     </select>
                 </div>
+                {{-- Perusahaan --}}
                 <div class="form-group">
-                    <label for="status">Status</label>
-                    <select name="status" id="" class="form-control">
-                        <option value="">Pilih Status</option>
-                        <option value="Tersedia">Tersedia</option>
-                        <option value="Tidak Tersedia">Tidak Tersedia</option>
+                    <label for="">Perusahaan</label>
+                    <select name="perusahaan_id" id="" class="form-control">
+                        <option value="">Pilih Perusahaan</option>
+                        @foreach ($perusahaan as $k)
+                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">

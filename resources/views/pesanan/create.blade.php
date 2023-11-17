@@ -15,7 +15,7 @@
                     <select name="kendaraan_id" id="" class="form-control">
                         <option value="">Pilih Kendaraan</option>
                         @foreach ($kendaraan as $k)
-                            <option value="{{ $k->id }}">{{ $k->nama_kendaraan }}</option>
+                            <option value="{{ $k->id }}">{{ $k->merk }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -40,7 +40,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="status_pesanan" value="Menunggu Persetujuan 1">
+                    <input type="hidden" class="form-control" name="status" value="Menunggu Persetujuan 1">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>

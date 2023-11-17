@@ -16,61 +16,72 @@
                 </svg>
             </a>
         </div>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100 " aria-expanded="false" class="dropdown-toggle nav-link">
-                <a class="nav-link" href="{{ Route('dashboard') }}">
-                    <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span></span>
-                </a>
-            </li>
-        </ul>
+
         @if (Auth::user()->hak_akses == 'admin')
-            
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#data" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-book fe-16"></i>
-                    <span class="ml-3 item-text">Data</span>
-                </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="data">
-                    <a class="nav-link pl-3" href="{{ Route('kendaraan.index') }}"><span class="ml-1">Kendaraan</span></a>
-                    <a class="nav-link pl-3" href="{{ Route('pegawai.index') }}"><span class="ml-1">Pegawai</span></a>
-                </ul>
-            </li>
-        </ul>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ Route('pesanan.index') }}">
-                    <i class="fe fe-layers fe-16"></i>
-                    <span class="ml-3 item-text">Pesanan</span>
-                </a>
-            </li>
-        </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 " aria-expanded="false" class="dropdown-toggle nav-link">
+                    <a class="nav-link" href="{{ route('dashboard-admin') }}">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span></span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="#data" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                        <i class="fe fe-book fe-16"></i>
+                        <span class="ml-3 item-text">Data</span>
+                    </a>
+                    <ul class="collapse list-unstyled pl-4 w-100" id="data">
+                        <a class="nav-link pl-3" href="{{ Route('kendaraan.index') }}"><span
+                                class="ml-1">Kendaraan</span></a>
+                        <a class="nav-link pl-3" href="{{ Route('pegawai.index') }}"><span
+                                class="ml-1">Pegawai</span></a>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ Route('pesanan.index') }}">
+                        <i class="fe fe-layers fe-16"></i>
+                        <span class="ml-3 item-text">Pesanan</span>
+                    </a>
+                </li>
+            </ul>
         @elseif (Auth::user()->hak_akses == 'atasan')
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ Route('pesanan.action') }}">
-                    <i class="fe fe-check-square fe-16"></i>
-                    <span class="ml-3 item-text">Persetujuan</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="/pesanan">
-                    <i class="fe fe-activity fe-16"></i>
-                    <span class="ml-3 item-text">Monitoring</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="/pesanan">
-                    <i class="fe fe-file-text fe-16"></i>
-                    <span class="ml-3 item-text">Laporan</span>
-                </a>
-            </li>
-        </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 " aria-expanded="false" class="dropdown-toggle nav-link">
+                    <a class="nav-link" href="{{ Route('dashboard') }}">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="{{ Route('pesanan.action') }}">
+                        <i class="fe fe-check-square fe-16"></i>
+                        <span class="ml-3 item-text">Persetujuan</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="/pesanan">
+                        <i class="fe fe-activity fe-16"></i>
+                        <span class="ml-3 item-text">Monitoring</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100">
+                    <a class="nav-link" href="/pesanan">
+                        <i class="fe fe-file-text fe-16"></i>
+                        <span class="ml-3 item-text">Laporan</span>
+                    </a>
+                </li>
+            </ul>
         @endif
 
         <ul class="navbar-nav flex-fill w-100 mb-2">

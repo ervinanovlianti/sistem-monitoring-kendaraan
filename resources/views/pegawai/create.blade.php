@@ -12,7 +12,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Status Pegawai</label>
-                        <select name="status" id="" class="form-control">
+                        <select name="jabatan" id="" class="form-control">
                             <option value="">Pilih Status</option>
                             <option value="Karyawan">Karyawan</option>
                             <option value="Kepala Divisi">Kepala Divisi</option>

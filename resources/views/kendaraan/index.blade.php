@@ -25,11 +25,10 @@
                                     @foreach ($data as $kendaraan)
                                         <tr>
                                             <td>{{ $kendaraan->id }}</td>
-                                            <td>{{ $kendaraan->nama_kendaraan }}</td>
-                                            <td>{{ $kendaraan->jenis }}</td>
+                                            <td>{{ $kendaraan->merk }}</td>
                                             <td>{{ $kendaraan->plat_nomor }}</td>
-                                            {{-- <td>{{ $kendaraan->perusahaan }}</td> --}}
-                                            <td><span class="badge badge-pill badge-info">Tersedia</span></td>
+                                            <td>{{ $kendaraan->tipe }}</td>
+                                            {{-- <td><span class="badge badge-pill badge-info">Tersedia</span></td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
