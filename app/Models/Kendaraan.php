@@ -9,9 +9,9 @@ class Kendaraan extends Model
 {
     use HasFactory;
 
-    protected $table = 'kendaraan_tabel';
+    protected $table = 'kendaraan';
     // agar dapat mengisi tabel
     protected $fillable = [
-        'id', 'nama_kendaraan', 'jenis', 'plat_nomor', 'konsumsi_bbm', 'jadwal_service', 'status'
+        'id', 'merk',  'plat_nomor', 'tipe', 'perusahaan_id',
     ];
 }

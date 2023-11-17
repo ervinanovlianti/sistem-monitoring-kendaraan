@@ -16,21 +16,26 @@ class KendaraanController extends Controller
     }
     public function create()
     {
-        return view('kendaraan.create');
+        $perusahaan = DB::table('perusahaan')->get();
+
+        return view('kendaraan.create', [
+            'perusahaan' => $perusahaan
+        ]);
     }
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_kendaraan' => 'required',
-            'jenis' => 'required',
+            'merk' => 'required',
             'plat_nomor' => 'required',
-            'status' => 'required',
+            'tipe' => 'required',
+            'perusahaan_id' => 'required',
         ]);
         $kendaraan = Kendaraan::create($validatedData);
 
         return redirect()->route('kendaraan.index');
     }
-    public function dashboard(){
+    public function dashboard()
+    {
         return view('dashboard');
     }
 }

@@ -11,35 +11,38 @@ class PesananController extends Controller
 {
     public function index()
     {
-        // $data = DB::table('pesanan_tabel')
-        // ->join('kendaraan_tabel', 'kendaraan_tabel.id', '=', 'pesanan_tabel.kendaraan_id')
-        // ->join('pegawai_tabel', 'pegawai_tabel.id','=','pesanan_tabel.pegawai_id', 'pegawai_tabel.id', '=', 'pesanan_tabel.atasan_id')
-        // ->get();
-        // buatlah relasi antara table pesanan dengan table kendaraan dan tabel pegawai dimana pada tabel pegawai berelasi dengan dirinya sendiri dan pada tabel pesanan berelasi dengan tabel kendaraan
-        $data = DB::table('pesanan_tabel')
-            ->join('kendaraan_tabel', 'kendaraan_tabel.id', '=', 'pesanan_tabel.kendaraan_id')
-            ->join('pegawai_tabel as pegawai', 'pegawai.id', '=', 'pesanan_tabel.pegawai_id')
-            ->leftJoin('pegawai_tabel as atasan', 'atasan.id', '=', 'pegawai.atasan_id')
+        $data = DB::table('pesanan')
+            ->join('kendaraan', 'kendaraan.id', '=', 'pesanan.kendaraan_id')
+            ->join('pegawai as pegawai', 'pegawai.id', '=', 'pesanan.pegawai_id')
+            ->leftJoin('pegawai as atasan', 'atasan.id', '=', 'pegawai.atasan_id')
             ->select(
-                'pesanan_tabel.*',
-                'kendaraan_tabel.*',
+                'pesanan.*',
+                'kendaraan.*',
                 'pegawai.id as id_pegawai',
                 'pegawai.nama as nama_pegawai',
                 'atasan.nama as nama_atasan'
             )
             ->get();
 
-
         return view('pesanan.index', ['data' => $data]);
     }
     public function create()
     {
         // mengambil data kendaraan dari tabel
-        $kendaraan = DB::table('kendaraan_tabel')->get();
-        $pegawai = DB::table('pegawai_tabel')->where('status', '=', 'Karyawan')->get();
-        $atasan = DB::table('pegawai_tabel')->where('status', '=', 'Kepala Divisi')->get();
+        $kendaraan = DB::table('kendaraan')->get();
+        $pegawai = DB::table('pegawai')->where('jabatan', '=', 'Karyawan')->get();
+        $atasan = DB::table('pegawai')->where('jabatan', '=', 'Kepala Divisi')->get();
+        $perusahaan = DB::table('perusahaan')->get();
 
-        return view('pesanan.create', ['kendaraan' => $kendaraan, 'pegawai' => $pegawai, 'atasan' => $atasan]);
+        return view(
+            'pesanan.create',
+            [
+                'kendaraan' => $kendaraan,
+                'pegawai' => $pegawai,
+                'atasan' => $atasan,
+                'perusahaan' => $perusahaan
+            ]
+        );
     }
     public function store(Request $request)
     {
@@ -49,7 +52,7 @@ class PesananController extends Controller
             'pegawai_id' => 'required',
             'atasan_id' => 'required',
             'tanggal_pemesanan' => 'required',
-            'status_pesanan' => 'required',
+            'status' => 'required',
         ]);
         Pesanan::create($validatedData);
         // jika berhasil berikan alert success
@@ -58,19 +61,19 @@ class PesananController extends Controller
         echo "<script>alert('Error!');</script>";
         return redirect()->route('pesanan.index');
     }
-    public function action(){
-        
-        $data = DB::table('pesanan_tabel')
-            ->join('kendaraan_tabel', 'kendaraan_tabel.id', '=', 'pesanan_tabel.kendaraan_id')
-            ->join('pegawai_tabel', 'pegawai_tabel.id', '=', 'pesanan_tabel.pegawai_id')
-            ->select('pesanan_tabel.id as id_pesanan', 'pesanan_tabel.*', 'kendaraan_tabel.*', 'pegawai_tabel.*')
+    public function action()
+    {
+
+        $data = DB::table('pesanan')
+            ->join('kendaraan', 'kendaraan.id', '=', 'pesanan.kendaraan_id')
+            ->join('pegawai', 'pegawai.id', '=', 'pesanan.pegawai_id')
+            ->select('pesanan.id as id_pesanan', 'pesanan.*', 'kendaraan.*', 'pegawai.*')
             ->get();
         return view('pesanan.persetujuan', ['data' => $data]);
     }
     public function persetujuan($id)
     {
         $pesanan = Pesanan::find($id);
-
 
         if (!$pesanan) {
             return redirect()->route('pesanan.index')->with('error', 'Pesanan tidak ditemukan.');
@@ -80,5 +83,9 @@ class PesananController extends Controller
         $pesanan->save();
 
         return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui.');
+    }
+    public function dashboard()
+    {
+        return view('dashboard2');
     }
 }

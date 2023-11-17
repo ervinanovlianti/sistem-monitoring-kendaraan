@@ -6,29 +6,34 @@ use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
 class PegawaiController extends Controller
 {
     public function index()
     {
-        $data = Pegawai::all();
+        $data = DB::table('pegawai')
+            ->leftJoin('pegawai as atasan', 'atasan.id', '=', 'pegawai.atasan_id')
+            ->select(
+                'pegawai.*',
+                'pegawai.id as id_pegawai',
+                'pegawai.nama as nama_pegawai',
+                'atasan.nama as nama_atasan'
+            )
+            ->get();
         return view('pegawai.index', ['data' => $data]);
     }
-    public function create(){
+    public function create()
+    {
         return view('pegawai.create');
     }
-    public function store(Request $request){
-        // validate
+    public function store(Request $request)
+    {
         $validatedData = $request->validate([
             'nama' => 'required',
-            'status' => 'required',
+            'jabatan' => 'required',
         ]);
-
-        // Create a new Kendaraan instance with the validated data
         $pegawai = Pegawai::create($validatedData);
-
-        // Redirect to the index page or do something else
+        echo "<script>alert('Success!');</script>";
+        echo "<script>alert('Error!');</script>";
         return redirect()->route('pegawai.index');
-
     }
 }

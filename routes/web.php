@@ -25,7 +25,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 Route::middleware(['auth', 'hak_akses:admin'])->group(function () {
-    Route::get('/dashboard', [KendaraanController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard-admin', [PesananController::class, 'dashboard'])->name('dashboard-admin');
     Route::get('/kendaraan', [KendaraanController::class, 'index'])->name('kendaraan.index');
     Route::get('/kendaraan/create', [KendaraanController::class, 'create'])->name('kendaraan.create');
     Route::post('/kendaraan/create', [KendaraanController::class, 'store'])->name('kendaraan.store');
