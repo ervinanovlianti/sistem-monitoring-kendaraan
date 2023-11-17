@@ -28,22 +28,26 @@
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $pesanan->tanggal_pemesanan }}</td>
-                                            <td>{{ $pesanan->nama_kendaraan }}</td>
-                                            <td>{{ $pesanan->jenis }}</td>
+                                            <td>{{ $pesanan->merk }}</td>
+                                            <td>{{ $pesanan->tipe }}</td>
                                             <td>{{ $pesanan->nama }}</td>
                                             <td>
-                                                @if ($pesanan->status_pesanan == 'Menunggu Persetujuan 1')
+                                                @if ($pesanan->status == 'Menunggu Konfirmasi Kantor Cabang')
                                                     <span
-                                                        class="badge badge-pill badge-warning">{{ $pesanan->status_pesanan }}</span>
+                                                        class="badge badge-pill badge-warning">{{ $pesanan->status }}</span>
+                                                @elseif ($pesanan->status == 'Menunggu Persetujuan Kantor Pusat')
+                                                    <span
+                                                        class="badge badge-pill badge-info">{{ $pesanan->status }}</span>
                                                 @else
                                                     <span
-                                                        class="badge badge-pill badge-success">{{ $pesanan->status_pesanan }}</span>
+                                                        class="badge badge-pill badge-success">{{ $pesanan->status }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($pesanan->status_pesanan == 'Menunggu Persetujuan 1')
+                                                @if ($pesanan->status == 'Menunggu Konfirmasi')
                                                     <a href="{{ route('pesanan.persetujuan', ['id' => $pesanan->id_pesanan]) }}"
-                                                        class="btn btn-primary">Accept</a>
+                                                        class="btn btn-primary">Forward</a>
+                                                    {{-- tolak --}}
                                                 @endif
                                             </td>
                                         </tr>
