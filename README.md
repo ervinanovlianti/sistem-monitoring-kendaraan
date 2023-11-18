@@ -77,53 +77,53 @@ graph TD;
   f22 -->|Persetujuan| f30
   f23 -->|Persetujuan| f31
 ```
-## Environment 
+## Persyaratan 
 - Database: MySQL
 - PHP Version: 8.2
 - Framework: Laravel
-## Panduan Penggunaan Aplikasi
 ### Instalasi
-1. Clone Repositori:
-```
-git clone https://github.com/nama-username/sistem-pemesanan-kendaraan.git
-```
-2. Pindah ke Direktori Proyek:
-```
-cd sistem-pemesanan-kendaraan
-```
-3. Instal Dependency:
-```
-composer install
-```
-4. Salin Berkas .env:
-```
-cp .env.example .env
-```
+- Clone Repository:
+  ```
+  git clone https://github.com/nama-username/sistem-pemesanan-kendaraan.git
+  ```
+- Pindah ke Direktori Proyek:
+  ```
+  cd sistem-pemesanan-kendaraan
+  ```
+- Instal Dependency:
+  ```
+  composer install
+  ```
+- Salin Berkas .env:
+  ```
+  cp .env.example .env
+  ```
 ### Konfigurasi .env:
 
-1. Buka file .env dan sesuaikan konfigurasi database:
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nama_database
-DB_USERNAME=db_monitoring_kendaraan
-DB_PASSWORD=kata_sandi_database
-```
-2. Key Aplikasi:
-```
-php artisan key:generate
-```
-3. Jalankan Migrasi dan Seeder:
-```
-php artisan migrate --seed
-```
-4. Jalankan Aplikasi:
-```
-php artisan serve
-```
-Buka Aplikasi:
-Akses aplikasi melalui ```http://localhost:8000``` pada browser Anda.
+- Buka file .env dan sesuaikan konfigurasi database:
+  ```
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=nama_database
+  DB_USERNAME=db_monitoring_kendaraan
+  DB_PASSWORD=kata_sandi_database
+  ```
+- Key Aplikasi:
+  ```
+  php artisan key:generate
+  ```
+- Jalankan Migrasi dan Seeder:
+  ```
+  php artisan migrate --seed
+  ```
+- Jalankan Aplikasi:
+  ```
+  php artisan serve
+  ```
+- Buka Aplikasi:
+  Akses aplikasi melalui ```http://localhost:8000``` pada browser Anda.
+  
 ### Daftar Pengguna
 - Admin
   - email: admin@gmail.com
@@ -134,3 +134,22 @@ Akses aplikasi melalui ```http://localhost:8000``` pada browser Anda.
 - Kepala Pusat (Level 1)
   - email: pusat@gmail.com
   - password: 12341234
+## Panduan Penggunaan
+- Pemesanan Kendaraan
+  - Login ke aplikasi menggunakan akun Admin atau Karyawan.
+  - Akses halaman "Pemesanan".
+  - Isi formulir pemesanan kendaraan dengan informasi yang diperlukan.
+  - Simpan Pesanan.
+- Persetujuan Pemesanan
+  - Login ke aplikasi menggunakan akun Pihak yang Menyetujui.
+  - Akses halaman "Pemesanan Kendaraan" atau "Persetujuan Pemesanan".
+  - Lihat daftar pemesanan yang menunggu persetujuan.
+  - Konfirmasi pemesanan untuk user dengan level 2.
+  - Setujui pemesanan untuk user dengan level 1.
+- Manajemen Kendaraan
+  - Login ke aplikasi menggunakan akun Admin.
+  - Akses halaman "Manajemen Kendaraan".
+  - Tambahkan dan lihat detail informasi kendaraan.
+- Laporan dan Grafik
+  - Akses halaman "Laporan".
+  - Lihat laporan pemesanan.
