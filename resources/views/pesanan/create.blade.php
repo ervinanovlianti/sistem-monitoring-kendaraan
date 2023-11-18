@@ -40,7 +40,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="status" value="Menunggu Persetujuan 1">
+                    <input type="hidden" class="form-control" name="status" value="Menunggu Konfirmasi">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>

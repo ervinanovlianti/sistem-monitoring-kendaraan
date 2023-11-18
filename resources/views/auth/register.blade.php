@@ -25,6 +25,7 @@
 
 <body class="vertical  light  ">
     <div class="wrapper vh-100">
+        <h2 class="text-center mt-5">Sistem Monitoring Kendaraan</h2>
         <div class="row justify-content-center mt-4">
             <div class="col-md-8">
                 <div class="card">

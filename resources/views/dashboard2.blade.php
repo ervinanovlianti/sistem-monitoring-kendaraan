@@ -23,7 +23,6 @@
                     </form>
                 </div>
             </div>
-            <!-- widgets -->
             <div class="row my-4">
                 <div class="col-md-4">
                     <div class="card shadow mb-4">
@@ -79,7 +78,7 @@
                         </div> <!-- /. card-body -->
                     </div> <!-- /. card -->
                 </div> <!-- /. col -->
-            </div> <!-- end section -->
+            </div> 
             <h2 class="page-title">Konsumsi BBM</h2>
             <div class="row">
                 <div class="col-md-12 my-4">
@@ -101,7 +100,7 @@
                     </div>
                 </div>
                 
-            </div> <!-- end section -->
+            </div> 
             <h2 class="page-title">Jadwal Service</h2>
             <div class="row">
                 <div class="col-md-12 my-4">
@@ -123,7 +122,7 @@
                     </div>
                 </div>
                 
-            </div> <!-- end section -->
+            </div> 
             <h2 class="page-title">Riwayat Pemakaian</h2>
             <div class="row">
                 <div class="col-md-12 my-4">
@@ -145,7 +144,7 @@
                     </div>
                 </div>
                 
-            </div> <!-- end section -->
+            </div> 
         </div>
     </div>
 @endsection

@@ -34,12 +34,18 @@
                                             <td>{{ $pesanan->nama_pegawai }}</td>
                                             <td>{{ $pesanan->nama_atasan }}</td>
                                             <td>
-                                                @if ($pesanan->status == 'Menunggu Persetujuan 1')
+                                                @if ($pesanan->status == 'Menunggu Konfirmasi')
                                                     <span
                                                         class="badge badge-pill badge-info">{{ $pesanan->status }}</span>
                                                 @else
                                                     <span
                                                         class="badge badge-pill badge-success  text-white">{{ $pesanan->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($pesanan->status == 'Disetujui' && Auth::user()->hak_akses == 'admin')
+                                                    {{-- <a href="{{ route('pesanan.sewa', ['id' => $pesanan->id_pesanan]) }}"
+                                                        class="btn btn-primary">Mulai</a> --}}
                                                 @endif
                                             </td>
                                         </tr>

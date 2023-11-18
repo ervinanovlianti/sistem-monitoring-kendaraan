@@ -29,8 +29,17 @@ class PesananController extends Controller
     public function create()
     {
         // mengambil data kendaraan dari tabel
-        $kendaraan = DB::table('kendaraan')->get();
-        $pegawai = DB::table('pegawai')->where('jabatan', '=', 'Karyawan')->get();
+        // bagaimana jika kendaraan yang sudah di pesan dan telah ditentukan drivernya, tidak dapat dipesan kembali
+        $kendaraan = DB::table('kendaraan')
+            ->leftJoin('pesanan', 'kendaraan.id', '=', 'pesanan.kendaraan_id')
+            ->whereNull('pesanan.id')
+            ->get();
+
+        $pegawai = DB::table('pegawai')
+            ->leftJoin('pesanan', 'pegawai.id', '=', 'pesanan.pegawai_id')
+            ->whereNull('pesanan.id')
+            ->where('jabatan', '=', 'Karyawan')
+            ->get();
         $atasan = DB::table('pegawai')->where('jabatan', '=', 'Kepala Divisi')->get();
         $perusahaan = DB::table('perusahaan')->get();
 
@@ -44,6 +53,21 @@ class PesananController extends Controller
             ]
         );
     }
+    // $kendaraan = DB::table('kendaraan')->get();
+    // $pegawai = DB::table('pegawai')->where('jabatan', '=', 'Karyawan')->get();
+    // $atasan = DB::table('pegawai')->where('jabatan', '=', 'Kepala Divisi')->get();
+    // $perusahaan = DB::table('perusahaan')->get();
+
+    // return view(
+    //     'pesanan.create',
+    //     [
+    //         'kendaraan' => $kendaraan,
+    //         'pegawai' => $pegawai,
+    //         'atasan' => $atasan,
+    //         'perusahaan' => $perusahaan
+    //     ]
+    // );
+    // }
     public function store(Request $request)
     {
         // validate
@@ -88,13 +112,12 @@ class PesananController extends Controller
     public function persetujuanKedua($id)
     {
         $pesanan = Pesanan::find($id);
-
         if (!$pesanan) {
             return redirect()->route('pesanan.index')->with('error', 'Pesanan tidak ditemukan.');
         }
 
         $pesanan->status = 'Disetujui';
-        $pesanan->atasan_id = 1;
+        $pesanan->atasan_id = 3;
         $pesanan->save();
 
         return redirect()->route('pesanan.action')->with('success', 'Pesanan disetujui di kantor pusat.');
@@ -102,5 +125,23 @@ class PesananController extends Controller
     public function dashboard()
     {
         return view('dashboard2');
+    }
+    // laporan pememesanan kendaraan
+    public function laporan()
+    {
+
+        $data = DB::table('pesanan')
+            ->join('kendaraan', 'kendaraan.id', '=', 'pesanan.kendaraan_id')
+            ->join('pegawai as pegawai', 'pegawai.id', '=', 'pesanan.pegawai_id')
+            ->leftJoin('pegawai as atasan', 'atasan.id', '=', 'pegawai.atasan_id')
+            ->select(
+                'pesanan.*',
+                'kendaraan.*',
+                'pegawai.id as id_pegawai',
+                'pegawai.nama as nama_pegawai',
+                'atasan.nama as nama_atasan'
+            )
+            ->get();
+        return view('pesanan.laporan', ['data' => $data]);
     }
 }

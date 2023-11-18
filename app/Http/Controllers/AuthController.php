@@ -69,6 +69,9 @@ class AuthController extends Controller
             }elseif (Auth::user()->hak_akses == 'atasan') {
                 return redirect()->route('dashboard')
                     ->withSuccess('You have successfully logged in as atasan!');
+            }elseif(Auth::user()->hak_akses == 'pusat'){
+                return redirect()->route('dashboard')
+                    ->withSuccess('You have successfully logged in as Pusat!');
             }
         }
         return back()->withErrors([

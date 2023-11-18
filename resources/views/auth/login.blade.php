@@ -25,51 +25,56 @@
 
 <body class="vertical  light  ">
     <div class="wrapper vh-100">
-      <div class="row justify-content-center mt-4">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">Login</div>
-            <div class="card-body">
-                <form action="{{ route('authenticate') }}" method="post">
-                    @csrf
-                    <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email</label>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
-                        </div>
+        <h2 class="text-center mt-5">Sistem Monitoring Kendaraan</h2>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Login</div>
+                    <div class="card-body">
+                        <form action="{{ route('authenticate') }}" method="post">
+                            @csrf
+                            <div class="mb-3 row">
+                                <label for="email"
+                                    class="col-md-4 col-form-label text-md-end text-start">Email</label>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" name="email" value="{{ old('email') }}">
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-end text-start">Password</label>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        id="password" name="password">
+                                    @if ($errors->has('password'))
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-8 offset-md-4">
+
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <small>Belum Punya Akun? <a href="/register">Register</a></small>
+                                </div>
+                            </div>
+
+                        </form>
                     </div>
-                    <div class="mb-3 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
-                        <div class="col-md-6">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
-                            @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-8 offset-md-4">
-                            
-                            <button type="submit" class="btn btn-primary">
-                                Login
-                            </button>
-                        </div>
-                        
-                    </div>
-                    <div class="row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <small>Belum Punya Akun? <a href="/register">Register</a></small>
-                        </div>
-                    </div>
-                    
-                </form>
+                </div>
             </div>
         </div>
-    </div>    
-</div>
     </div> <!-- .wrapper -->
     <script src="{{ asset('template/js/jquery.min.js') }}"></script>
     <script src="{{ asset('template/js/popper.min.js') }}"></script>
@@ -96,15 +101,14 @@
     <script src="{{ asset('template/js/apexcharts.min.js') }}"></script>
     <script src="{{ asset('template/js/apexcharts.custom.js') }}"></script>
     <script src="{{ asset('template/js/apps.js') }}"></script>
-    <script src='{{ asset('template/js/dataTables.bootstrap4.min.js')}}'></script>
+    <script src='{{ asset('template/js/dataTables.bootstrap4.min.js') }}'></script>
     <script src='{{ asset('template/js/jquery.dataTables.min.js') }}'></script>
     <script>
-        $('#dataTable-1').DataTable(
-        {
+        $('#dataTable-1').DataTable({
             autoWidth: true,
             "lengthMenu": [
-            [16, 32, 64, -1],
-            [16, 32, 64, "All"]
+                [16, 32, 64, -1],
+                [16, 32, 64, "All"]
             ]
         });
     </script>

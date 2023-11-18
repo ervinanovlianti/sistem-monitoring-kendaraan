@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-12">
-            <h2 class="page-title">Data Pemesanan Kendaraan</h2>
+            <h2 class="page-title">Data Pesanan Kendaraan</h2>
             <div class="row">
                 <!-- simple table -->
                 <div class="col-md-12 my-4">
@@ -16,8 +16,8 @@
                                         <th>Nama Kendaraan</th>
                                         <th>Jenis Kendaraan</th>
                                         <th>Supir</th>
+                                        <th>Persetujuan</th>
                                         <th>Status Pesanan</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,25 +30,20 @@
                                             <td>{{ $pesanan->tanggal_pemesanan }}</td>
                                             <td>{{ $pesanan->merk }}</td>
                                             <td>{{ $pesanan->tipe }}</td>
-                                            <td>{{ $pesanan->nama }}</td>
+                                            <td>{{ $pesanan->nama_pegawai }}</td>
+                                            <td>{{ $pesanan->nama_atasan }}</td>
                                             <td>
                                                 @if ($pesanan->status == 'Menunggu Konfirmasi')
-                                                    <span
-                                                        class="badge badge-pill badge-warning">{{ $pesanan->status }}</span>
-                                                @elseif ($pesanan->status == 'Diteruskan')
                                                     <span class="badge badge-pill badge-info">{{ $pesanan->status }}</span>
                                                 @else
                                                     <span
-                                                        class="badge badge-pill badge-success text-white">{{ $pesanan->status }}</span>
+                                                        class="badge badge-pill badge-success  text-white">{{ $pesanan->status }}</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($pesanan->status == 'Menunggu Konfirmasi' && Auth::user()->hak_akses == 'atasan')
-                                                    <a href="{{ route('pesanan.persetujuan', ['id' => $pesanan->id_pesanan]) }}"
-                                                        class="btn btn-primary">Forward</a>
-                                                @elseif($pesanan->status == 'Diteruskan' && Auth::user()->hak_akses == 'pusat')
-                                                    <a href="{{ route('pesanan.persetujuanKedua', ['id' => $pesanan->id_pesanan]) }}"
-                                                        class="btn btn-primary">Accept</a>
+                                                @if ($pesanan->status == 'Disetujui' && Auth::user()->hak_akses == 'admin')
+                                                    {{-- <a href="{{ route('pesanan.sewa', ['id' => $pesanan->id_pesanan]) }}"
+                                                        class="btn btn-primary">Mulai</a> --}}
                                                 @endif
                                             </td>
                                         </tr>
@@ -57,8 +52,9 @@
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div> <!-- simple table -->
+
+            </div> <!-- end section -->
+        </div> <!-- .col-12 -->
+    </div> <!-- .row -->
 @endsection

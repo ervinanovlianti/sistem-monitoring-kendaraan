@@ -25,11 +25,13 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::get('/dashboard', [KendaraanController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+
 Route::middleware(['auth', 'hak_akses:admin'])->group(function () {
     // 
     Route::get('/profil', [PegawaiController::class, 'profil'])->name('profil');
 
-    Route::get('/dashboard', [KendaraanController::class, 'dashboard'])->name('dashboard');
     Route::get('/persetujuan', [PesananController::class, 'action'])->name('pesanan.action');
     Route::get('/persetujuan/{id}', [PesananController::class, 'persetujuan'])->name('pesanan.persetujuan');
     // 
@@ -46,15 +48,17 @@ Route::middleware(['auth', 'hak_akses:admin'])->group(function () {
     Route::post('/pesanan/create', [PesananController::class, 'store'])->name('pesanan.store');
     Route::get('/data', [DataController::class, 'index'])->name('data.index');
     Route::get('/data/tambang/{id}', [DataController::class, 'showTambang'])->name('data.tambang');
-    Route::get('/monitoring', [DataController::class, 'monitoring'])->name('data.bbm');
-
+    
 });
+Route::get('/monitoring', [DataController::class, 'monitoring'])->name('data.bbm')->middleware('auth');
 Route::get('/profil', [PegawaiController::class, 'profil'])->name('profil')->middleware('auth');
-
+Route::get('/dashboard', [KendaraanController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+// laporan
+Route::get('/laporan', [PesananController::class, 'laporan'])->name('pesanan.laporan')->middleware('auth');
 Route::middleware(['auth','hak_akses:atasan'])->group(function () {
-    Route::get('/dashboard', [KendaraanController::class, 'dashboard'])->name('dashboard');
     Route::get('/persetujuan', [PesananController::class, 'action'])->name('pesanan.action');
     Route::get('/persetujuan/{id}', [PesananController::class, 'persetujuanPertama'])->name('pesanan.persetujuan');
 });
+Route::get('/persetujuanKedua', [PesananController::class, 'action'])->name('pesanan.action');
 
-Route::get('/persetujuan/{id}', [PesananController::class, 'persetujuanKedua'])->name('pesanan.persetujuan')->middleware('auth');
+Route::get('/persetujuanKedua/{id}', [PesananController::class, 'persetujuanKedua'])->name('pesanan.persetujuanKedua')->middleware('auth');
